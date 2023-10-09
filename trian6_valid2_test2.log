@@ -1,0 +1,33 @@
+nohup: ignoring input
+hh
+Namespace(addaptadj=True, adjtype='doubletransition', aptonly=False, batch_size=64, blocks=4, data='data/TSMO', device='cuda:0', dropout=0.3, epochs=1, expid=1, gcn_bool=True, in_dim=3, layers=2, learning_rate=0.001, nhid=32, num_nodes=583, print_every=50, randomadj=True, save='./garage/metr', seq_length=12, weight_decay=0.0001)
+start training...
+Iter: 000, Train Loss: 5.2074, Train MAPE: 0.1999, Train RMSE: 7.4191, Train RMSE Incident: 8.3534, Train RMSE Non-incident: 7.4152
+Iter: 050, Train Loss: 5.3464, Train MAPE: 0.1988, Train RMSE: 7.6300, Train RMSE Incident: 8.8828, Train RMSE Non-incident: 7.6248
+Iter: 100, Train Loss: 5.4497, Train MAPE: 0.2121, Train RMSE: 7.7705, Train RMSE Incident: 9.0855, Train RMSE Non-incident: 7.7659
+Iter: 150, Train Loss: 5.3695, Train MAPE: 0.2046, Train RMSE: 7.6020, Train RMSE Incident: 8.9119, Train RMSE Non-incident: 7.5962
+Iter: 200, Train Loss: 5.3597, Train MAPE: 0.2110, Train RMSE: 7.6784, Train RMSE Incident: 9.3985, Train RMSE Non-incident: 7.6713
+Iter: 250, Train Loss: 5.3066, Train MAPE: 0.2049, Train RMSE: 7.5423, Train RMSE Incident: 8.5699, Train RMSE Non-incident: 7.5364
+Iter: 300, Train Loss: 5.3441, Train MAPE: 0.2077, Train RMSE: 7.6370, Train RMSE Incident: 9.3252, Train RMSE Non-incident: 7.6300
+Iter: 350, Train Loss: 5.3355, Train MAPE: 0.2024, Train RMSE: 7.5705, Train RMSE Incident: 8.6002, Train RMSE Non-incident: 7.5668
+Iter: 400, Train Loss: 5.3629, Train MAPE: 0.2092, Train RMSE: 7.5813, Train RMSE Incident: 8.9623, Train RMSE Non-incident: 7.5747
+Epoch: 001, Inference Time: 0.3338 secs
+Epoch: 001, Train Loss: 5.3830, Train MAPE: 0.2085, Train RMSE: 7.6744, Train RMSE Incident: 9.0682, Train RMSE Non-incident: 7.6685, Valid Loss: 5.5035, Valid MAPE: 0.2172, Valid RMSE: 7.8257, Valid RMSE Incident: 8.5950, Valid RMSE Non-incident: 7.8188, Training Time: 8.7358/epoch
+Average Training Time: 8.7358 secs/epoch
+Average Inference Time: 0.3338 secs
+Training finished
+The valid loss on best model is 5.5035
+Evaluate best model on test data for horizon 1, Test MAE: 5.4165, Test MAPE: 0.2086, Test RMSE: 7.6386, Test RMSE Incident: 8.6989, Test RMSE Non-incident: 7.6350
+Evaluate best model on test data for horizon 2, Test MAE: 5.4164, Test MAPE: 0.2086, Test RMSE: 7.6385, Test RMSE Incident: 8.7007, Test RMSE Non-incident: 7.6348
+Evaluate best model on test data for horizon 3, Test MAE: 5.4163, Test MAPE: 0.2086, Test RMSE: 7.6384, Test RMSE Incident: 8.7041, Test RMSE Non-incident: 7.6347
+Evaluate best model on test data for horizon 4, Test MAE: 5.4163, Test MAPE: 0.2086, Test RMSE: 7.6384, Test RMSE Incident: 8.7068, Test RMSE Non-incident: 7.6347
+Evaluate best model on test data for horizon 5, Test MAE: 5.4162, Test MAPE: 0.2086, Test RMSE: 7.6382, Test RMSE Incident: 8.7102, Test RMSE Non-incident: 7.6346
+Evaluate best model on test data for horizon 6, Test MAE: 5.4162, Test MAPE: 0.2086, Test RMSE: 7.6381, Test RMSE Incident: 8.7133, Test RMSE Non-incident: 7.6345
+Evaluate best model on test data for horizon 7, Test MAE: 5.4161, Test MAPE: 0.2086, Test RMSE: 7.6381, Test RMSE Incident: 8.7153, Test RMSE Non-incident: 7.6344
+Evaluate best model on test data for horizon 8, Test MAE: 5.4160, Test MAPE: 0.2086, Test RMSE: 7.6380, Test RMSE Incident: 8.7188, Test RMSE Non-incident: 7.6343
+Evaluate best model on test data for horizon 9, Test MAE: 5.4160, Test MAPE: 0.2086, Test RMSE: 7.6380, Test RMSE Incident: 8.7209, Test RMSE Non-incident: 7.6343
+Evaluate best model on test data for horizon 10, Test MAE: 5.4159, Test MAPE: 0.2086, Test RMSE: 7.6378, Test RMSE Incident: 8.7215, Test RMSE Non-incident: 7.6341
+Evaluate best model on test data for horizon 11, Test MAE: 5.4158, Test MAPE: 0.2086, Test RMSE: 7.6376, Test RMSE Incident: 8.7228, Test RMSE Non-incident: 7.6339
+Evaluate best model on test data for horizon 12, Test MAE: 5.4156, Test MAPE: 0.2086, Test RMSE: 7.6374, Test RMSE Incident: 8.7254, Test RMSE Non-incident: 7.6337
+On average over 12 horizons, Test MAE: 5.4161, Test MAPE: 0.2086, Test RMSE: 7.6381, Test RMSE Incident: 8.7132, Test RMSE Non-incident: 7.6344
+Total time spent: 35.1169

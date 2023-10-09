@@ -157,21 +157,45 @@ def load_dataset(dataset_dir, batch_size, valid_batch_size= None, test_batch_siz
     data['scaler'] = scaler
     return data
 
-def masked_mse(preds, labels, null_val=np.nan):
+def masked_mse(preds, labels, inc, null_val=np.nan):
     if np.isnan(null_val):
         mask = ~torch.isnan(labels)
+        # mask_inc = ~torch.isnan(labels)
+        #  = ~torch.isnan(labels)
     else:
         mask = (labels!=null_val)
+        # mask_inc = (labels!=null_val)
+
+    mask_non = mask * (1-inc)
+    mask_non = mask_non.float()
+    mask_non /= torch.mean((mask_non))
+    mask_non = torch.where(torch.isnan(mask_non), torch.zeros_like(mask_non), mask_non)
+
+    mask_inc = mask * inc    
+    mask_inc = mask_inc.float()
+    mask_inc /= torch.mean((mask_inc))
+    mask_inc = torch.where(torch.isnan(mask_inc), torch.zeros_like(mask_inc), mask_inc)
+
     mask = mask.float()
     mask /= torch.mean((mask))
     mask = torch.where(torch.isnan(mask), torch.zeros_like(mask), mask)
-    loss = (preds-labels)**2
-    loss = loss * mask
-    loss = torch.where(torch.isnan(loss), torch.zeros_like(loss), loss)
-    return torch.mean(loss)
 
-def masked_rmse(preds, labels, null_val=np.nan):
-    return torch.sqrt(masked_mse(preds=preds, labels=labels, null_val=null_val))
+    loss = (preds-labels)**2
+    loss_all = loss * mask
+    loss_all = torch.where(torch.isnan(loss_all), torch.zeros_like(loss_all), loss_all)
+
+    loss_inc = loss * mask_inc
+    loss_inc = torch.where(torch.isnan(loss_inc), torch.zeros_like(loss_inc), loss_inc)
+    
+    loss_non = loss * mask_non
+    loss_non = torch.where(torch.isnan(loss_non), torch.zeros_like(loss_non), loss_non)
+
+    # loss_non = loss
+    return torch.mean(loss), torch.mean(loss_inc), torch.mean(loss_non)
+
+def masked_rmse(preds, labels, inc, null_val=np.nan):
+    mse, mse_inc, mse_non = masked_mse(preds=preds, labels=labels, inc=inc, null_val=null_val)
+    return torch.sqrt(mse), torch.sqrt(mse_inc), torch.sqrt(mse_non)
 
 
 def masked_mae(preds, labels, null_val=np.nan):
@@ -202,10 +226,10 @@ def masked_mape(preds, labels, null_val=np.nan):
     return torch.mean(loss)
 
 
-def metric(pred, real):
+def metric(pred, real, inc):
     mae = masked_mae(pred,real,0.0).item()
     mape = masked_mape(pred,real,0.0).item()
-    rmse = masked_rmse(pred,real,0.0).item()
-    return mae,mape,rmse
+    rmse, rmse_inc, rmse_non = masked_rmse(pred,real,inc,0.0)
+    return mae,mape,rmse.item(), rmse_inc.item(), rmse_non.item()
 
 

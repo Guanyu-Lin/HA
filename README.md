@@ -25,10 +25,14 @@ This is the original pytorch implementation of Graph WaveNet in the following pa
 mkdir -p data/{METR-LA,PEMS-BAY}
 
 # METR-LA
-python generate_training_data.py --output_dir=data/METR-LA --traffic_df_filename=data/metr-la.h5
+python generate_training_data.py --output_dir=data/METR-LA --traffic_df_filename=../DCRNN/data/metr-la.h5
+
+#TSMO
+python generate_training_data.py --output_dir=data/TSMO --traffic_df_filename=../Incident/data/TSMO_df_spd_tmc_5min_all_583.h5
+
 
 # PEMS-BAY
-python generate_training_data.py --output_dir=data/PEMS-BAY --traffic_df_filename=data/pems-bay.h5
+python generate_training_data.py --output_dir=data/PEMS-BAY --traffic_df_filename=../DCRNN/data/pems-bay.h5
 
 ```
 ## Train Commands
